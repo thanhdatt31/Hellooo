@@ -125,7 +125,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
 
 //        if (id == R.id.add_student) {
 //            addNewStudent()
@@ -133,7 +132,7 @@ class MainActivity : AppCompatActivity(),
 //        if (id == R.id.sort) {
 //            showSortDialog()
 //        }
-        when (id) {
+        when (item.itemId) {
             R.id.add_student -> addNewStudent()
             R.id.sort -> showSortDialog()
         }
