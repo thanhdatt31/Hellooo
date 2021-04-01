@@ -16,12 +16,14 @@
         android:id="@+id/edt_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="phone"
         app:layout_constraintTop_toBottomOf="@id/edt_name" />
 
     <EditText
         android:id="@+id/edt_dob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="date"
         app:layout_constraintTop_toBottomOf="@id/edt_phone" />
 
     <EditText
@@ -34,9 +36,9 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edt_speciality"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_speciality" />
 
 
     <Button
