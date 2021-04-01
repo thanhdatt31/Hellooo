@@ -125,13 +125,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-//        if (id == R.id.add_student) {
-//            addNewStudent()
-//        }
-//        if (id == R.id.sort) {
-//            showSortDialog()
-//        }
         when (item.itemId) {
             R.id.add_student -> addNewStudent()
             R.id.sort -> showSortDialog()
@@ -140,7 +133,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun showSortDialog() {
-        // setup the alert builder
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setTitle("Sort List")
 
@@ -151,14 +143,9 @@ class MainActivity : AppCompatActivity(),
                 1 -> sortBy(1)
             }
         }
-
-
-// add OK and Cancel buttons
         builder.setPositiveButton("OK") { dialog, which ->
             // user clicked OK
         }
-
-// create and show the alert dialog
         val dialog = builder.create()
         dialog.show()
     }
