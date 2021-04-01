@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(),
             student.name = "Huy $i"
             student.speciality = "ATTT"
             student.DOB = "2000"
-            student.phoneNumber = "12345678$i"
+            student.phoneNumber = "09123456$i"
             student.level = "College"
             listStudent.add(student)
         }
