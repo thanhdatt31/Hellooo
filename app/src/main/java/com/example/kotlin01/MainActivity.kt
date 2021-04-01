@@ -152,13 +152,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun sortBy(i: Int) {
-//        if (i == 1) {
-//            listStudent.sortBy { it.level }
-//            studentAdapter.notifyDataSetChanged()
-//        } else {
-//            listStudent.sortByDescending { it.level }
-//            studentAdapter.notifyDataSetChanged()
-//        }
         when (i) {
             0 -> {
                 listStudent.sortByDescending { it.level }
