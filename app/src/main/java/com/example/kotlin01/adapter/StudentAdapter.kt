@@ -83,9 +83,7 @@ class StudentAdapter(private val click: ClickListener) :
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                if (results != null) {
-                    listFiltered = results.values as ArrayList<Student>
-                }
+                if (results != null) listFiltered = results.values as ArrayList<Student>
                 notifyDataSetChanged()
             }
 

@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun addNewStudent() {
         val intentAdd = Intent(this@MainActivity, AddNewStudent::class.java)
+        intentAdd.putExtra("list_student", listStudent)
         startActivityForResult(intentAdd, 1)
     }
 
@@ -51,6 +52,15 @@ class MainActivity : AppCompatActivity(),
         }
         for (i in 1..5) {
             val student = Student()
+            student.name = "Van $i"
+            student.speciality = "ATTT"
+            student.DOB = "2001"
+            student.phoneNumber = "09223456$i"
+            student.level = "College"
+            listStudent.add(student)
+        }
+        for (i in 1..5) {
+            val student = Student()
             student.name = "Huy $i"
             student.speciality = "ATTT"
             student.DOB = "2000"
@@ -58,6 +68,7 @@ class MainActivity : AppCompatActivity(),
             student.level = "College"
             listStudent.add(student)
         }
+
     }
 
     private fun initRecyclerView() {
@@ -136,12 +147,13 @@ class MainActivity : AppCompatActivity(),
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setTitle("Sort List")
 
-        val level = arrayOf("University", "College", "Name")
+        val level = arrayOf("University", "College", "Name", "Phone Numer")
         builder.setSingleChoiceItems(level, -1) { dialog, which ->
             when (which) {
                 0 -> sortBy(0)
                 1 -> sortBy(1)
                 2 -> sortBy(2)
+                3 -> sortBy(3)
             }
         }
         builder.setPositiveButton("OK") { dialog, which ->
@@ -163,6 +175,10 @@ class MainActivity : AppCompatActivity(),
             }
             2 -> {
                 listStudent.sortBy { it.name }
+                studentAdapter.notifyDataSetChanged()
+            }
+            3 -> {
+                listStudent.sortBy { it.phoneNumber }
                 studentAdapter.notifyDataSetChanged()
             }
 

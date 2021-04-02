@@ -3,6 +3,7 @@ package com.example.kotlin01.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -23,9 +24,11 @@ class AddNewStudent : AppCompatActivity() {
         setContentView(R.layout.activity_add_new_student)
         initSpinner()
         btn_add_student.setOnClickListener {
-            if (edt_name.text.isNullOrBlank() || edt_speciality.text.isNullOrBlank() || edt_phone.text.isNullOrBlank() || edt_speciality.text.isNullOrBlank()) {
+            Log.d("datnt", checkDuplicatePhone().toString())
+            if (edt_name.text.isNullOrBlank() || edt_speciality.text.isNullOrBlank() || edt_phone.text.isNullOrBlank() || edt_speciality.text.isNullOrBlank() || checkDuplicatePhone()) {
                 Toast.makeText(this@AddNewStudent, "Please fill all the field", Toast.LENGTH_SHORT)
                     .show()
+
             } else {
                 val resultIntent = Intent()
                 student.name = edt_name.text.toString()
@@ -62,5 +65,16 @@ class AddNewStudent : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun checkDuplicatePhone(): Boolean {
+        var checkResult: Boolean = true
+        val listStudent: ArrayList<Student> =
+            intent.getSerializableExtra("list_student") as ArrayList<Student>
+        for (i in 0 until listStudent.size) {
+            checkResult = listStudent[i].phoneNumber == edt_phone.text.toString()
+            break
+        }
+        return checkResult
     }
 }
