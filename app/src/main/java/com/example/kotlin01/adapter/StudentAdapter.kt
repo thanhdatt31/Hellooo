@@ -69,7 +69,9 @@ class StudentAdapter(private val click: ClickListener) :
                     val filteredList: ArrayList<Student> = arrayListOf()
                     for (i in listStudent) {
                         if (i.name.toLowerCase(Locale.ROOT)
-                                .contains(student.toLowerCase(Locale.ROOT))
+                                .contains(student.toLowerCase(Locale.ROOT)) || i.phoneNumber.contains(
+                                student
+                            ) || i.DOB.contains(student)
                         ) {
                             filteredList.add(i)
                         }

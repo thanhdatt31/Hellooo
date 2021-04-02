@@ -147,13 +147,14 @@ class MainActivity : AppCompatActivity(),
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setTitle("Sort List")
 
-        val level = arrayOf("University", "College", "Name", "Phone Numer")
+        val level = arrayOf("University", "College", "Name", "Phone Number", "ALL")
         builder.setSingleChoiceItems(level, -1) { dialog, which ->
             when (which) {
                 0 -> sortBy(0)
                 1 -> sortBy(1)
                 2 -> sortBy(2)
                 3 -> sortBy(3)
+                4 -> sortBy(4)
             }
         }
         builder.setPositiveButton("OK") { dialog, which ->
@@ -166,12 +167,11 @@ class MainActivity : AppCompatActivity(),
     private fun sortBy(i: Int) {
         when (i) {
             0 -> {
-                listStudent.sortByDescending { it.level }
-                studentAdapter.notifyDataSetChanged()
+                studentAdapter.setData(listStudent.filter { it.level == "University" } as ArrayList<Student>)
             }
             1 -> {
-                listStudent.sortBy { it.level }
-                studentAdapter.notifyDataSetChanged()
+                studentAdapter.setData(listStudent.filter { it.level == "College" } as ArrayList<Student>)
+
             }
             2 -> {
                 listStudent.sortBy { it.name }
@@ -180,6 +180,9 @@ class MainActivity : AppCompatActivity(),
             3 -> {
                 listStudent.sortBy { it.phoneNumber }
                 studentAdapter.notifyDataSetChanged()
+            }
+            4 -> {
+                studentAdapter.setData(listStudent)
             }
 
         }
