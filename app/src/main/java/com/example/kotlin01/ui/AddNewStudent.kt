@@ -53,7 +53,7 @@ class AddNewStudent : AppCompatActivity() {
 
     private fun initSpinner() {
         spinner = findViewById(R.id.spinner)
-        val options = arrayListOf("University","College")
+        val options = arrayListOf("University", "College")
         spinner.adapter =
             ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, options)
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -74,13 +74,8 @@ class AddNewStudent : AppCompatActivity() {
     }
 
     private fun checkDuplicatePhone(): Boolean {
-        var checkResult = true
         val listStudent: ArrayList<Student> =
             intent.getSerializableExtra("list_student") as ArrayList<Student>
-        for (i in 0 until listStudent.size) {
-            checkResult = listStudent[i].phoneNumber == edt_phone.text.toString()
-            break
-        }
-        return checkResult
+        return listStudent.find { it.phoneNumber == edt_phone.text.toString() } != null
     }
 }
